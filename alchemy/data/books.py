@@ -10,7 +10,7 @@ class Booк(SqlAlchemyBase):
     author = sqlalchemy.Column(sqlalchemy.String)
     year = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     genre = sqlalchemy.Column(sqlalchemy.String)
-    description = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    description = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
     # Не знаю, как хранить
     text = None
     modified_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)

@@ -90,11 +90,15 @@ def login():
 
 
 @app.route('/library/<user_email>')
-def index(user_email):
+def account(user_email):
     return render_template('home_page.html', title=previous_pages[user_email]['title'],
                            description='Электронная библиотека')
 
-    # должна проверять, зарегестрирован ли пользователь и зависимо от этого выдавать html страницу
+
+@app.route('/library')
+def home_page():
+    return render_template('home_page.html', title='Электронная библиотека',
+                           description='Электронная библиотека')
 
 
 @app.route('/library/successful_registration', methods=['GET', 'POST'])
