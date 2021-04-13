@@ -92,7 +92,7 @@ def login():
 @app.route('/library/<user_email>')
 def index(user_email):
     return render_template('home_page.html', title=previous_pages[user_email]['title'],
-                           description='Электронная библиотека лектронной библиотеке')
+                           description='Электронная библиотека')
 
     # должна проверять, зарегестрирован ли пользователь и зависимо от этого выдавать html страницу
 
