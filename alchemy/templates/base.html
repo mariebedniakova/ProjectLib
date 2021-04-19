@@ -15,9 +15,11 @@
         <a class="navbar-brand" href="#">{{description}}</a>
     </nav>
 </header>
-<!-- Begin page content -->
 <main role="main" class="container">
     {% block content %}{% endblock %}
+    <form action="http://127.0.0.1:8080/library/menu">
+        <button type="submit"> Меню </button>
+    </form>
 </main>
 </body>
 </html>

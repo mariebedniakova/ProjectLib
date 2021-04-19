@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div>Когда-нибудь здесь будут книги</div>
+    {% for book in books %}
+
+        <div> {{book.title}} - {{book.author}} </div>
+        <div> {{book.genre}} </div>
+        {% if current_user.is_authenticated %}
+            <form action="http://127.0.0.1:8080/library/{{book.id}}">
+                <button type="submit"> Открыть </button>
+            </form>
+
+            {% if book not in users_books[current_user.email] %}
+                <form action="http://127.0.0.1:8080/library/{{current_user.email}}/addbook/{{book.id}}">
+                    <button type="submit"> Добавить </button>
+                </form>
+            {% endif %}
+        {% endif %}
+
+    {% endfor %}
 
 {% endblock %}

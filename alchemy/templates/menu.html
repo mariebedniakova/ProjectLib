@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if not current_user.is_authenticated %}
+      <form action="http://127.0.0.1:8080/library/registration">
+        <button type="submit"> Зарегестрироваться </button>
+      </form>
+
+      <form action="http://127.0.0.1:8080/library/login">
+        <button type="submit"> Войти </button>
+      </form>
+    {% else %}
+        <h5> {{ current_user.email }} </h5>
+            <form action="http://127.0.0.1:8080/library/{{current_user.email}}">
+                <button type="submit"> Профиль </button>
+            </form>
+            <form action="http://127.0.0.1:8080/library/logout">
+                <button type="submit"> Выйти </button>
+            </form>
+            {% if not current_user.admin %}
+                <form action="http://127.0.0.1:8080/library/addbook">
+                    <button type="submit"> Добавить книгу </button>
+                </form>
+            {% endif %}
+    {% endif %}
+
+    <form action="http://127.0.0.1:8080/library">
+        <button type="submit"> На главную </button>
+    </form>
+{% endblock %}

@@ -1,20 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <div>Операция {{result}}</div>
     <form action="" method="post" novalidate>
         <div>
             {{ form.csrf_token }}
         </div>
         {% for field in form if field.name != 'csrf_token' %}
             <div>
-                {{ field.label()}}
                 {{ field() }}
                 {% for error in field.errors %}
                     <div class="error">{{ error }}</div>
                 {% endfor %}
             </div>
-
         {% endfor %}
-        <div>{{message}}</div>
     </form>
 {% endblock %}

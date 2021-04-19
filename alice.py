@@ -1,7 +1,7 @@
 from flask import Flask, request
 from random import choice
 from alchemy.data.db_session import global_init, create_session
-from alchemy.data.books import Booк
+from alchemy.data.books import Book
 import pymorphy2
 import logging
 import json
@@ -68,30 +68,30 @@ def make_statistic(ans, user_id, genre=False, author=False):
     db_sess = create_session()
     if genre:
         ans = ans
-        for book in db_sess.query(Booк).filter(Booк.genre.lower().like(f"%{ans.lower()}%")):
+        for book in db_sess.query(Book).filter(Book.genre.lower().like(f"%{ans.lower()}%")):
             if book.title not in bookStatistic[user_id]:
                 bookStatistic[user_id][book.title] = 0
             bookStatistic[user_id][book.title] += 10
         return
     if author:
         ans = ans
-        for book in db_sess.query(Booк).filter(Booк.author.lower().like(ans.lower())):
+        for book in db_sess.query(Book).filter(Book.author.lower().like(ans.lower())):
             if book.title not in bookStatistic[user_id]:
                 bookStatistic[user_id][book.title] = 0
             bookStatistic[user_id][book.title] += 10
         return
     ans = set(map(lambda x: morph.parse(x)[0].normal_form, filter(lambda x: len(x) > 3, ans.split())))
-    for book in db_sess.query(Booк).filter(
-            set(map(lambda x: morph.parse(x)[0].normal_form, Booк.title.split())) & ans):
+    for book in db_sess.query(Book).filter(
+            set(map(lambda x: morph.parse(x)[0].normal_form, Book.title.split())) & ans):
         if book.title not in bookStatistic[user_id]:
             bookStatistic[user_id][book.title] = 0
         bookStatistic[user_id][book.title] += 10
-    for book in db_sess.query(Booк).filter(
-            set(map(lambda x: morph.parse(x)[0].normal_form, Booк.description.split())) & ans):
+    for book in db_sess.query(Book).filter(
+            set(map(lambda x: morph.parse(x)[0].normal_form, Book.description.split())) & ans):
         if book.title not in bookStatistic[user_id]:
             bookStatistic[user_id][book.title] = 0
         bookStatistic[user_id][book.title] += len([(set(map(lambda x: morph.parse(x)[0].normal_form,
-                                                            Booк.description.split())) & ans)])
+                                                            Book.description.split())) & ans)])
 
 
 def handle_dialog(req, res):

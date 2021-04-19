@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h6>{{book.title}}</h6>
+    <div>автор - {{book.author}}</div>
+    <div>год создания - {{book.year}}</div>
+    <div>жанр - {{book.genre}}</div>
+    <div>{{book.description}}</div>
+    <form action="http://127.0.0.1:8080/library/{{book.id}}/text">
+        <button type="submit"> Читать </button>
+    </form>
+    {% if book not in books[current_user.email] %}
+        <form action="http://127.0.0.1:8080/library/{{current_user.email}}/addbook/{{book.id}}">
+            <button type="submit"> Добавить </button>
+        </form>
+    {% endif %}
+
+{% endblock %}
