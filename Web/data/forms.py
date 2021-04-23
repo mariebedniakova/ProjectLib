@@ -21,7 +21,6 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Зарегестрироваться')
 
 
-
 class OkForm(FlaskForm):
     submit = SubmitField('Перейти')
 

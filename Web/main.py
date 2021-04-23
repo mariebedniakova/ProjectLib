@@ -21,6 +21,7 @@ previous_pages = {}
 users_book = {}
 all_books = None
 
+
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
@@ -38,6 +39,7 @@ def add_book_to_user(user_email, book_id):
     if book not in users_book[user_email]:
         users_book[user_email].append(book)
     return redirect("/library")
+
 
 @app.route('/library/registration', methods=['GET', 'POST'])
 def registration():
@@ -98,8 +100,9 @@ def logout():
     logout_user()
     return redirect('/library')
 
+
 @login_required
-@app.route('/library',  methods=['GET', 'POST'])
+@app.route('/library', methods=['GET', 'POST'])
 def home_page():
     db_sess = db_session.create_session()
     books = db_sess.query(Book).all()
@@ -132,6 +135,7 @@ def book_text(book_id):
     db_sess = db_session.create_session()
     book = db_sess.query(Book).get(book_id)
     return book.text
+
 
 @app.route('/library/successful_registration', methods=['GET', 'POST'])
 def successful_registration():

@@ -11,8 +11,10 @@ from flask import Flask, render_template, redirect
 
 from flask_login import LoginManager, login_user, login_required, current_user
 
+
 class AccessError(Exception):
     pass
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -21,10 +23,7 @@ login_manager.init_app(app)
 global_init("db/library.db")
 
 
-
-
-
-@app.route('/addbook',  methods=['GET', 'POST'])
+@app.route('/addbook', methods=['GET', 'POST'])
 @login_required
 def add_job():
     try:
@@ -46,7 +45,7 @@ def add_job():
             db_sess.commit()
             return redirect('/library')
     except AccessError:
-        return # ругается на отсутствие прав доступа
+        return  # ругается на отсутствие прав доступа
     return render_template('books.html', title='Добавление книги',
                            form=form)
 
@@ -56,5 +55,3 @@ if __name__ == '__main__':
 
 # to do: возможность зарегестрироваться при входе и войти при регистрации
 # редактирование удаление и получение книги. примитивные html
-
-
