@@ -106,8 +106,8 @@ def logout():
 def home_page():
     db_sess = db_session.create_session()
     books = db_sess.query(Book).all()
-    return render_template('home_page.html', title='Электронная библиотека',
-                           description='Электронная библиотека', books=books, current_user=current_user,
+    return render_template('home_page.html', title='YLibrary',
+                           description='YLibrary', books=books, current_user=current_user,
                            users_books=users_book)
 
 

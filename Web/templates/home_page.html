@@ -1,22 +1,43 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <link rel="stylesheet" href="../static/css/style_for_main.css">
+    <link href="../static/css/style_for_book.css" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+<header class="header">
+    <h1 class="header__title">Добро пожаловать в <br><i>YLibrary</i>!</h1>
+</header>
+{% endblock %}
+
 {% block content %}
-    {% for book in books %}
+    <form action="http://127.0.0.1:8080/library/menu">
+        <button type="submit"> Меню </button>
+    </form>
 
-        <div> {{book.title}} - {{book.author}} </div>
-        <div> {{book.genre}} </div>
-        {% if current_user.is_authenticated %}
-            <form action="http://127.0.0.1:8080/library/{{book.id}}">
-                <button type="submit"> Открыть </button>
-            </form>
+    <div class="container">
+        <h1>Книги</h1>
+        <div class="members">
+            {% for book in books %}
+                <div class="member">
+                    <img src={{book.text}} width="500" height="800">
+                    <h2 class="member-name">{{book.title}}</h2>
+                    <span class="member-role">{{book.author}}</span>
+                </div>
+                {% if current_user.is_authenticated %}
+                    <form action="http://127.0.0.1:8080/library/{{book.id}}">
+                        <button type="submit"> Открыть </button>
+                    </form>
 
-            {% if book not in users_books[current_user.email] %}
-                <form action="http://127.0.0.1:8080/library/{{current_user.email}}/addbook/{{book.id}}">
-                    <button type="submit"> Добавить </button>
-                </form>
-            {% endif %}
-        {% endif %}
+                    {% if book not in users_books[current_user.email] %}
+                        <form action="http://127.0.0.1:8080/library/{{current_user.email}}/addbook/{{book.id}}">
+                            <button type="submit"> Добавить </button>
+                        </form>
+                    {% endif %}
+                {% endif %}
 
-    {% endfor %}
-
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

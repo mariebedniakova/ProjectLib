@@ -3,23 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet"
+    <!--<link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossorigin="anonymous">
+          crossorigin="anonymous">-->
     <title>{{title}}</title>
+    {% block head %}{% endblock %}
 </head>
 <body>
-<header>
+<!--<header>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">{{description}}</a>
     </nav>
-</header>
+</header> -->
+{% block header %}{% endblock %}
 <main role="main" class="container">
     {% block content %}{% endblock %}
-    <form action="http://127.0.0.1:8080/library/menu">
+    <!--<form action="http://127.0.0.1:8080/library/menu">
         <button type="submit"> Меню </button>
-    </form>
+    </form>-->
 </main>
 </body>
 </html>

@@ -29,7 +29,7 @@ h1 {
     display: flex;
     min-height: 100vh;
     padding: 8px 50px;
-    background-image: url("../../img/main_fon.jpg");
+    background-image: url("../img/main_fon.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

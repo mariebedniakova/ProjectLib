@@ -1,0 +1,43 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #eee;
+}
+
+h1 {
+    color: #007765;
+    font-weight: 500;
+    text-align: center;
+    font-size: 64px;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.members {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.member {
+    text-align: center;
+    flex-basis: 50%;
+    padding: 100px;
+    box-sizing: border-box;
+    margin-bottom: 100px;
+}
+
+.member-name {
+    margin: 0;
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 24px;
+    color: #007765;
+}
+
+.member-role {
+    font-style: italic;
+    font-size: 18px;
+}
