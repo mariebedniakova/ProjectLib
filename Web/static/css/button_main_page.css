@@ -1,0 +1,51 @@
+button {
+  padding: 100px 60px;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: black;
+  font-weight: bold;
+  background: green;
+  box-shadow: 0 20px 0 #820000;
+  cursor: pointer;
+  transition: 0.03s ease;
+  position: absolute;
+  top: 110%;
+  left: 90%;
+}
+
+button:focus,
+button:active {
+  outline: none;
+}
+
+button:active {
+  box-shadow: 0 5px 0 #820000;
+  transform: translateY(15px);
+}
+
+button.danger {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  color: black;
+  background: red;
+  box-shadow: 0 4px 8px 0 rgba(39, 153, 214, 0.35);
+  cursor: pointer;
+  transition: 2s;
+  position: absolute;
+  top: 850%;
+  left: 5%;
+}
+
+span.danger {
+  font-size:2px;
+}
+
+button.danger:hover {
+  background: red;
+  box-shadow: 0 4px 16px 0 rgba(39, 153, 214, 0.25);
+  transform: scale(20);
+}

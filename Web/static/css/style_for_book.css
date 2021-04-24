@@ -1,16 +1,20 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background: #eee;
+    background-color: #02f;
+    background-image: url("../img/bg.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 h1 {
-    color: #007765;
+    color: yellow;
     font-weight: 500;
     text-align: center;
     font-size: 64px;
 }
 
-.container {
+.containers {
     width: 1200px;
     margin: 0 auto;
 }
@@ -23,10 +27,10 @@ h1 {
 
 .member {
     text-align: center;
-    flex-basis: 50%;
-    padding: 100px;
+    flex-basis: 30%;
+    padding: 50px;
     box-sizing: border-box;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .member-name {
@@ -34,10 +38,11 @@ h1 {
     margin-top: 12px;
     font-weight: 600;
     font-size: 24px;
-    color: #007765;
+    color: yellow;
 }
 
 .member-role {
     font-style: italic;
     font-size: 18px;
+    color: goldenrod;
 }

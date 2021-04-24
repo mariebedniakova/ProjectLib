@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block head %}
-    <link rel="stylesheet" href="../static/css/style_for_main.css">
     <link href="../static/css/style_for_book.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style_for_main.css">
+    <link rel="stylesheet" href="../static/css/button_main_page.css">
 {% endblock %}
 
 {% block header %}
@@ -13,15 +14,15 @@
 
 {% block content %}
     <form action="http://127.0.0.1:8080/library/menu">
-        <button type="submit"> Меню </button>
+        <button type="submit" style="padding: 30px;"> Меню </button>
     </form>
 
-    <div class="container">
+    <div class="containers">
         <h1>Книги</h1>
         <div class="members">
             {% for book in books %}
                 <div class="member">
-                    <img src={{book.text}} width="500" height="800">
+                    <img src={{book.text}}>
                     <h2 class="member-name">{{book.title}}</h2>
                     <span class="member-role">{{book.author}}</span>
                 </div>
@@ -40,4 +41,5 @@
             {% endfor %}
         </div>
     </div>
+    <button class="danger" type="submit" style="padding: 30px;"> Нажми на меня)))(+100 баллов к этому проекту) </button>
 {% endblock %}
