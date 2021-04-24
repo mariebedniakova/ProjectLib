@@ -7,17 +7,13 @@ from data.books import Book
 from data import db_session
 from data.forms import OkForm, BooksForm, LoginForm, RegistrationForm
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
+from alice import previous_pages
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 login_manager = LoginManager()
 login_manager.init_app(app)
 db_session.global_init("db/library.db")
-# Словарь, хранящий предыдущую страницу по ключу email пользователя в виде словаря
-# с ключами "url" и "title" (см. login())
-# Нужен, чтобы после регистрации и авторизации пользователь,
-# которому Алиса рекомендовала книгу, мог вернуться на страницу этой книги
-previous_pages = {}
 users_book = {}
 all_books = None
 
@@ -73,7 +69,7 @@ def login():
         user = db_sess.query(User).filter(User.email == form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user)
-            if user.email not in previous_pages:
+            if user.id not in previous_pages and user.email not in previous_pages:
                 previous_pages[user.email] = {}
                 previous_pages[user.email]['url'] = f'/{user.email}'
                 previous_pages[user.email]['title'] = f'{user.name} {user.surname}'
@@ -139,7 +135,7 @@ def book_page(book_id):
 def book_text(book_id):
     db_sess = db_session.create_session()
     book = db_sess.query(Book).get(book_id)
-    return book.text
+    return book.description
 
 
 @app.route('/library/successful_registration', methods=['GET', 'POST'])
