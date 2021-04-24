@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <link rel="stylesheet" href="../static/css/fon.css">
+    <link rel="stylesheet" href="../static/css/beauty_btn.css">
+{% endblock %}
+
+{% block header %}
+<header>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="http://127.0.0.1:8080/library">{{description}}</a>
+    </nav>
+</header>
+{% endblock %}
+
 {% block content %}
     <form action="" method="post" novalidate>
         <div>

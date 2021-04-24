@@ -36,8 +36,8 @@ button.danger {
   cursor: pointer;
   transition: 2s;
   position: absolute;
-  top: 850%;
-  left: 5%;
+  top: 910%;
+  left: 40%;
 }
 
 span.danger {

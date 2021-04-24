@@ -62,7 +62,7 @@ def registration():
         db_sess.commit()
         return redirect("/library/successful_registration")
     return render_template('registration.html', title='Регистрация', form=form,
-                           description='Регистрация в электронной библиотеке')
+                           description='YLibrary')
 
 
 @app.route('/library/login', methods=['GET', 'POST'])
@@ -80,8 +80,8 @@ def login():
             return redirect("/library" + previous_pages[user.email]['url'])
         return render_template('login.html',
                                message="Неправильный логин или пароль",
-                               form=form)
-    return render_template('login.html', title='Авторизация', form=form)
+                               form=form, description='YLibrary')
+    return render_template('login.html', title='Авторизация', form=form, description='YLibrary')
 
 
 @app.route('/library/<user_email>', methods=['GET', 'POST'])
@@ -90,13 +90,13 @@ def account(user_email):
     if user.email not in users_book:
         users_book[user_email] = []
     return render_template('account.html', title=user.name,
-                           description='Электронная библиотека', books=users_book[user.email])
+                           description='YLibrary', books=users_book[user.email])
 
 
 @app.route('/library/menu', methods=['GET', 'POST'])
 def menu():
     return render_template('menu.html', title='Меню',
-                           description='Электронная библиотека', current_user=current_user)
+                           description='YLibrary', current_user=current_user)
 
 
 @app.route('/library/logout')
@@ -122,7 +122,7 @@ def access_error(name):
     if form.validate_on_submit():
         return redirect('/library/login')
     return render_template('result.html', title=name,
-                           description=name,
+                           description='YLibrary',
                            result='не доступна.', form=form)
 
 
@@ -132,7 +132,7 @@ def book_page(book_id):
         access_error('Информация о книге')
     db_sess = db_session.create_session()
     book = db_sess.query(Book).get(book_id)
-    return render_template('book_page.html', book=book, books=users_book)
+    return render_template('book_page.html', book=book, books=users_book, description='YLibrary')
 
 
 @app.route('/library/<int:book_id>/text')
@@ -148,7 +148,7 @@ def successful_registration():
     if form.validate_on_submit():
         return redirect('/library/login')
     return render_template('result.html', title='Регистрация',
-                           description='Регистрация в электронной библиотеке',
+                           description='YLibrary',
                            result='прошла успешно.', form=form)
 
 
@@ -175,7 +175,7 @@ def add_book():
         db_sess.commit()
         return redirect('/library')
 
-    return render_template('add_book_page.html', title='Добавление книги', ddescription='Добавление книги',
+    return render_template('add_book_page.html', title='Добавление книги', ddescription='YLibrary',
                            form=form)
 
 
