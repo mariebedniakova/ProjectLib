@@ -28,6 +28,11 @@ def load_user(user_id):
     return db_sess.query(User).get(user_id)
 
 
+@app.route('/')
+def main_redirect():
+    return redirect("/library")
+
+
 @login_required
 @app.route('/library/<user_email>/addbook/<int:book_id>')
 def add_book_to_user(user_email, book_id):

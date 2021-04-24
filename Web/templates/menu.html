@@ -17,7 +17,7 @@
             <form action="http://127.0.0.1:8080/library/logout">
                 <button type="submit"> Выйти </button>
             </form>
-            {% if not current_user.admin %}
+            {% if current_user.admin %}
                 <form action="http://127.0.0.1:8080/library/addbook">
                     <button type="submit"> Добавить книгу </button>
                 </form>
