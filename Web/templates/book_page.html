@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <link rel="stylesheet" href="../static/css/lite_background.css">
+{% endblock %}
+
 {% block content %}
     <h6>{{book.title}}</h6>
     <div>автор - {{book.author}}</div>

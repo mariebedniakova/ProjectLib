@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <link rel="stylesheet" href="../static/css/fon.css">
+    <link rel="stylesheet" href="../static/css/beauty_btn.css">
+    <link rel="stylesheet" href="../static/css/color_text.css">
+{% endblock %}
+
 {% block content %}
-    <div>Операция {{result}}</div>
+    <div class="color-text">Операция {{result}}</div>
     <form action="" method="post" novalidate>
         <div>
             {{ form.csrf_token }}

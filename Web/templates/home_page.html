@@ -14,7 +14,7 @@
 
 {% block content %}
     <form action="http://127.0.0.1:8080/library/menu">
-        <button type="submit" style="padding: 30px;"> Меню </button>
+        <button type="submit" style="padding: 30px;" class="menu"> Меню </button>
     </form>
 
     <div class="containers">
@@ -25,19 +25,18 @@
                     <img src={{book.text}}>
                     <h2 class="member-name">{{book.title}}</h2>
                     <span class="member-role">{{book.author}}</span>
-                </div>
-                {% if current_user.is_authenticated %}
+                    {% if current_user.is_authenticated %}
                     <form action="http://127.0.0.1:8080/library/{{book.id}}">
-                        <button type="submit"> Открыть </button>
+                        <button type="submit" class="btn btn-primary"> Открыть </button>
                     </form>
 
                     {% if book not in users_books[current_user.email] %}
                         <form action="http://127.0.0.1:8080/library/{{current_user.email}}/addbook/{{book.id}}">
-                            <button type="submit"> Добавить </button>
+                            <button type="submit" class="btn btn-primary"> Добавить </button>
                         </form>
                     {% endif %}
                 {% endif %}
-
+                </div>
             {% endfor %}
         </div>
     </div>

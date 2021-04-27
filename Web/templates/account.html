@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <link rel="stylesheet" href="../static/css/lite_background.css">
+{% endblock %}
+
 {% block content %}
     <h4> {{current_user.name}} {{current_user.surname}} </h4>
     {% if current_user.admin %}
