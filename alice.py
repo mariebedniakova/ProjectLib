@@ -70,7 +70,8 @@ def make_a_guestion(user_id):
     return ques
 
 
-# на основе ответов пользователя формируем статистику (по количеству вхождений слов в описание и название)
+# на основе ответов пользователя формируем статистику (по количеству
+# вхождений слов в описание и название)
 def make_statistic(ans, user_id, genre=False, author=False):
     if user_id not in bookStatistic:
         bookStatistic[user_id] = {}
@@ -90,7 +91,8 @@ def make_statistic(ans, user_id, genre=False, author=False):
                 bookStatistic[user_id][book.id] = 0
             bookStatistic[user_id][book.id] += 10
         return
-    ans = set(map(lambda x: morph.parse(x)[0].normal_form, filter(lambda x: len(x) > 3, ans.split())))
+    ans = set(map(lambda x: morph.parse(x)[0].normal_form, filter(lambda x: len(x) > 3,
+                                                                  ans.split())))
     for book in db_sess.query(Book).filter(
             set(map(lambda x: morph.parse(x)[0].normal_form, Book.title.split())) & ans):
         if book.id not in bookStatistic[user_id]:

@@ -31,7 +31,8 @@
                     </form>
 
                     {% if book not in users_books[current_user.email] %}
-                        <form action="http://127.0.0.1:8080/library/{{current_user.email}}/addbook/{{book.id}}">
+                        <form action="http://127.0.0.1:8080/library/
+                        {{current_user.email}}/addbook/{{book.id}}">
                             <button type="submit" class="btn btn-primary"> Добавить </button>
                         </form>
                     {% endif %}
@@ -40,5 +41,6 @@
             {% endfor %}
         </div>
     </div>
-    <button class="danger" type="submit" style="padding: 30px;"> Нажми на меня)))(+100 баллов к этому проекту) </button>
+    <button class="danger" type="submit" style="padding: 30px;"> Нажми на
+        меня)))(+100 баллов к этому проекту) </button>
 {% endblock %}
