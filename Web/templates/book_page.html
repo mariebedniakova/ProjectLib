@@ -13,10 +13,14 @@
     <form action="http://127.0.0.1:8080/library/{{book.id}}/text">
         <button type="submit"> Читать </button>
     </form>
-    {% if book not in books[current_user.email] %}
+    {% if book not in books[current_user.email] and  current_user.is_authenticated%}
         <form action="http://127.0.0.1:8080/library/{{current_user.email}}/addbook/{{book.id}}">
             <button type="submit"> Добавить </button>
         </form>
     {% endif %}
+
+    <form action="http://127.0.0.1:8080/library/menu">
+        <button type="submit"> Меню </button>
+    </form>
 
 {% endblock %}

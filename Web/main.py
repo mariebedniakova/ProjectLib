@@ -124,11 +124,9 @@ def access_error(name):
 
 @app.route('/library/<int:book_id>')
 def book_page(book_id):
-    if not current_user.is_authenticated:
-        access_error('Информация о книге')
     db_sess = db_session.create_session()
     book = db_sess.query(Book).get(book_id)
-    return render_template('book_page.html', book=book, books=users_book, description='YLibrary')
+    return render_template('book_page.html', book=book, books=users_book, description='YLibrary', current_user=current_user)
 
 
 @app.route('/library/<int:book_id>/text')
