@@ -39,7 +39,7 @@ def chose_a_book(user_id):
     if not bookStatistic[user_id].items():
         return db_sess.query(Book).get(1).title
     book = db_sess.query(Book).get(max(bookStatistic[user_id].items(), key=lambda x: x[1])[0])
-    return book.title
+    return book.title, book.id
 
 
 # получает из csv вопросы и возможные  ответы, формирует словарь
@@ -165,10 +165,11 @@ def get_suggests(user_id, last=False):
     # Если осталась только одна подсказка, предлагаем подсказку
     # со ссылкой на библиотеку.
     if last:
-        title = chose_a_book(user_id)
+        title, id = chose_a_book(user_id)
         suggests = [{
             "title": 'Посмотрю',
-            "hide": True
+            "hide": True,
+            'url': f'http://127.0.0.1:8080/library/{id}'
         }]
         return suggests, title
 
